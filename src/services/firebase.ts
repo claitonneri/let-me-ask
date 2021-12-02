@@ -1,8 +1,8 @@
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getDatabase } from 'firebase/database';
+import 'firebase/auth';
+import 'firebase/database';
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+import firebase from 'firebase/app';
+
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -14,8 +14,9 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_MEASUREMENT_ID
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const database = getDatabase(app);
+firebase.initializeApp(firebaseConfig);
 
-export { auth, database };
+const auth = firebase.auth();
+const database = firebase.database();
+
+export { firebase, auth, database };
