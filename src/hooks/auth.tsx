@@ -25,7 +25,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<IUserState>();
 
   useEffect(() => {
-    auth.onAuthStateChanged(userInFirebase => {
+    const unsubscribe = auth.onAuthStateChanged(userInFirebase => {
       if (userInFirebase) {
         const { uid, displayName, photoURL } = userInFirebase;
 
@@ -40,6 +40,10 @@ export const AuthProvider: React.FC = ({ children }) => {
         });
       }
     });
+
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   const signIn = useCallback(async () => {
