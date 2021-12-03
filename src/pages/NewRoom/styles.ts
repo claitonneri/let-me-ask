@@ -7,7 +7,7 @@ export const Container = styled.div`
 `;
 
 export const Aside = styled.aside`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     flex: 7;
 
     background: ${theme.colors.primary};
@@ -73,7 +73,7 @@ export const Wrapper = styled.div`
       border-radius: 8px;
       font-weight: 500;
       background: #ea4335;
-      color: #FFF;
+      color: #fff;
 
       display: flex;
       justify-content: center;
@@ -104,7 +104,7 @@ export const Wrapper = styled.div`
         height: 50px;
         border-radius: 8px;
         padding: 0 16px;
-        background: #FFF;
+        background: #fff;
         border: 1px solid ${theme.colors.background};
       }
 
@@ -112,10 +112,10 @@ export const Wrapper = styled.div`
         margin: 16px 0;
       }
 
-      button, input {
+      button,
+      input {
         width: 100%;
       }
     }
   `}
 `;
-

@@ -4,6 +4,6 @@ export default {
 
     text: '#f8f8f8',
     description: '#737380',
-    background: '#a8a8b3'
-  }
-}
+    background: '#a8a8b3',
+  },
+};

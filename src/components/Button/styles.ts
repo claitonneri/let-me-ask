@@ -1,4 +1,5 @@
-import styled, { css } from "styled-components";
+/* eslint-disable import/prefer-default-export */
+import styled, { css } from 'styled-components';
 
 export const Container = styled.button`
   ${({ theme }) => css`
@@ -7,7 +8,7 @@ export const Container = styled.button`
     border-radius: 8px;
     font-weight: 500;
     background: ${theme.colors.primary};
-    color: #FFF;
+    color: #fff;
     padding: 0 32px;
 
     display: flex;
