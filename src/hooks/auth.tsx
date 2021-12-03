@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useCallback, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useCallback,
+  useState,
+  useEffect,
+} from 'react';
 import { useMemo } from 'react';
 import { auth, firebase } from '../services/firebase';
 
@@ -17,6 +23,24 @@ const AuthContext = createContext({} as IAuthContext);
 
 export const AuthProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<IUserState>();
+
+  useEffect(() => {
+    auth.onAuthStateChanged(userInFirebase => {
+      if (userInFirebase) {
+        const { uid, displayName, photoURL } = userInFirebase;
+
+        if (!displayName || !photoURL) {
+          throw new Error('Missing information from Googla Account.');
+        }
+
+        setUser({
+          id: uid,
+          name: displayName,
+          avatar: photoURL,
+        });
+      }
+    });
+  }, []);
 
   const signIn = useCallback(async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
